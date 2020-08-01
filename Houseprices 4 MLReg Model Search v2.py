@@ -180,7 +180,9 @@ print('Test R2: ', r2)
 print('Index: ', gscv.best_index_)
 cvresults = pd.DataFrame(gscv.cv_results_).reset_index()
 cvresults['model'] = cvresults['param_reg__estimator'].astype('str')
+cvresults['model'] = cvresults['param_reg__estimator'].astype('str')
 cvresults['mean_test_score'] *= -1
+cvresults.to_csv('cvresults Base Model Search.csv')
 
 
 summary_results = cvresults[['model','mean_test_score']].groupby('model').min().reset_index()
